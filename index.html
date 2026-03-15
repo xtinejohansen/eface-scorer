@@ -7,7 +7,6 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
     --bg: #f7f6f3;
     --surface: #ffffff;
@@ -27,14 +26,7 @@
     --radius: 10px;
     --radius-sm: 6px;
   }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--bg);
-    color: var(--text);
-    min-height: 100vh;
-    padding: 0;
-  }
+  body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; padding: 0; }
 
   .topbar {
     background: var(--surface);
@@ -47,11 +39,8 @@
     top: 0;
     z-index: 10;
   }
-
   .topbar-left h1 { font-size: 15px; font-weight: 500; letter-spacing: -0.2px; }
   .topbar-left p { font-size: 12px; color: var(--text3); margin-top: 1px; }
-
-  .topbar-right { display: flex; gap: 8px; }
 
   button {
     font-family: 'DM Sans', sans-serif;
@@ -71,18 +60,8 @@
 
   .main { max-width: 880px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
 
-  .summary-row {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-    margin-bottom: 1.25rem;
-  }
-
-  .mini-card {
-    background: var(--surface2);
-    border-radius: var(--radius-sm);
-    padding: 12px 14px;
-  }
+  .summary-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-bottom: 1.25rem; }
+  .mini-card { background: var(--surface2); border-radius: var(--radius-sm); padding: 12px 14px; }
   .mini-card .mlabel { font-size: 11px; color: var(--text3); margin-bottom: 6px; line-height: 1.4; min-height: 28px; }
   .mini-card .mval { font-size: 22px; font-weight: 500; font-family: 'DM Mono', monospace; }
   .mini-card .msub { font-size: 11px; color: var(--text3); }
@@ -107,13 +86,7 @@
   .badge-bad { background: var(--red-light); color: var(--red); }
 
   .sections { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-  .section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px;
-  }
+  .section { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px; }
   .section.full { grid-column: 1 / -1; }
 
   .section-header {
@@ -128,16 +101,30 @@
   .section-score { font-size: 17px; font-weight: 500; font-family: 'DM Mono', monospace; }
   .section-score small { font-size: 11px; font-weight: 400; color: var(--text3); font-family: 'DM Sans', sans-serif; }
 
-  .item { margin-bottom: 14px; }
+  .item { margin-bottom: 16px; }
   .item:last-child { margin-bottom: 0; }
-  .item-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 6px; }
-  .item-name { font-size: 12.5px; color: var(--text2); }
-  .item-right { display: flex; align-items: baseline; gap: 2px; }
-  .item-val { font-size: 13px; font-weight: 500; font-family: 'DM Mono', monospace; min-width: 26px; text-align: right; }
-  .item-max { font-size: 11px; color: var(--text3); }
+  .item-name { font-size: 12.5px; color: var(--text2); margin-bottom: 7px; }
+  .item-controls { display: flex; align-items: center; gap: 8px; }
+  .item-controls input[type=range] { flex: 1; }
+
+  .num-input {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    width: 52px;
+    padding: 4px 6px;
+    border: 1px solid var(--border2);
+    border-radius: var(--radius-sm);
+    background: var(--surface2);
+    color: var(--text);
+    text-align: center;
+    outline: none;
+    flex-shrink: 0;
+  }
+  .num-input:focus { border-color: var(--teal); background: var(--surface); }
+  .item-max-label { font-size: 11px; color: var(--text3); flex-shrink: 0; }
 
   input[type=range] {
-    width: 100%;
     -webkit-appearance: none;
     appearance: none;
     height: 3px;
@@ -167,7 +154,37 @@
     box-shadow: 0 0 0 1.5px var(--teal);
   }
 
-  .platysma-note {
+  .ocular-guide {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .ocular-guide-title {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--text3);
+    padding: 5px 10px;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .ocular-guide-rows { display: flex; }
+  .ocular-range-block {
+    flex: 1;
+    padding: 8px 10px;
+    border-right: 1px solid var(--border);
+    transition: background 0.15s;
+  }
+  .ocular-range-block:last-child { border-right: none; flex: 2; }
+  .ocular-range-block.active { background: var(--teal-light); }
+  .orb-range { font-size: 12px; font-weight: 500; font-family: 'DM Mono', monospace; color: var(--text); margin-bottom: 3px; display: flex; align-items: center; gap: 5px; }
+  .orb-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; opacity: 0; transition: opacity 0.15s; }
+  .ocular-range-block.active .orb-dot { opacity: 1; }
+  .orb-label { font-size: 11px; color: var(--text2); line-height: 1.4; }
+
+  .section-note {
     margin-top: 12px;
     font-size: 12px;
     color: var(--text3);
@@ -177,24 +194,10 @@
     line-height: 1.6;
   }
 
-  .export-bar {
-    margin-top: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 18px;
-  }
-
-  .export-bar-top {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-  }
-
+  .export-bar { margin-top: 1.5rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 18px; }
+  .export-bar-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
   .export-bar-info .etitle { font-size: 13px; font-weight: 500; }
   .export-bar-info .esub { font-size: 12px; color: var(--text2); margin-top: 2px; }
-
   .export-actions { display: flex; gap: 8px; flex-shrink: 0; }
 
   .preview-row {
@@ -210,12 +213,7 @@
     display: none;
     border: 1px solid var(--border);
   }
-
-  .preview-header {
-    font-size: 11px;
-    color: var(--text3);
-    margin-bottom: 4px;
-  }
+  .preview-header { font-size: 11px; color: var(--text3); margin-bottom: 4px; }
 
   .toast {
     position: fixed;
@@ -241,6 +239,9 @@
     .summary-row { grid-template-columns: 1fr 1fr; }
     .topbar { padding: 12px 1rem; }
     .main { padding: 1.25rem 1rem 3rem; }
+    .ocular-guide-rows { flex-direction: column; }
+    .ocular-range-block { border-right: none; border-bottom: 1px solid var(--border); }
+    .ocular-range-block:last-child { border-bottom: none; }
   }
 </style>
 </head>
@@ -251,9 +252,7 @@
     <h1>eFACE Synkinesis Scorer</h1>
     <p>Rozen Facial Nerve Center · UT Southwestern</p>
   </div>
-  <div class="topbar-right">
-    <button onclick="resetAll()">Reset</button>
-  </div>
+  <button onclick="resetAll()">Reset</button>
 </div>
 
 <div class="main">
@@ -297,6 +296,23 @@
         <span class="section-score" id="sc-ocular">0 <small>/ 100</small></span>
       </div>
       <div id="items-ocular"></div>
+      <div class="ocular-guide">
+        <div class="ocular-guide-title">Scoring reference</div>
+        <div class="ocular-guide-rows">
+          <div class="ocular-range-block" id="orb-0">
+            <div class="orb-range"><span class="orb-dot"></span>0 – 5</div>
+            <div class="orb-label">Eye closure</div>
+          </div>
+          <div class="ocular-range-block" id="orb-1">
+            <div class="orb-range"><span class="orb-dot"></span>5 – 15</div>
+            <div class="orb-label">Near eye closure</div>
+          </div>
+          <div class="ocular-range-block" id="orb-2">
+            <div class="orb-range"><span class="orb-dot"></span>15 – 100</div>
+            <div class="orb-label">Ratio vs. healthy side (e.g. 50 = closes 50% compared to healthy side)</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="section">
@@ -321,7 +337,7 @@
         <span class="section-score" id="sc-platysma">0 <small>/ 100</small></span>
       </div>
       <div id="items-platysma"></div>
-      <div class="platysma-note">
+      <div class="section-note">
         100 = no involvement &nbsp;·&nbsp; &lt;40 = hypertone at rest &nbsp;·&nbsp; &lt;25 = banding at rest
       </div>
     </div>
@@ -391,27 +407,46 @@ function buildSection(key) {
     const div = document.createElement("div");
     div.className = "item";
     div.innerHTML = `
-      <div class="item-row">
-        <span class="item-name">${item.name}</span>
-        <span class="item-right">
-          <span class="item-val" id="val-${id}">0</span>
-          <span class="item-max"> / ${item.pts}</span>
-        </span>
+      <div class="item-name">${item.name}</div>
+      <div class="item-controls">
+        <input type="range" id="rng-${id}" min="0" max="${item.pts}" step="1" value="0"
+          oninput="onSlide('${key}', ${i}, this.value)">
+        <input type="number" id="num-${id}" class="num-input" min="0" max="${item.pts}" value="0"
+          oninput="onType('${key}', ${i}, this.value)">
+        <span class="item-max-label">/ ${item.pts}</span>
       </div>
-      <input type="range" min="0" max="${item.pts}" step="1" value="0"
-        oninput="onSlide('${key}', ${i}, this.value)">
     `;
     container.appendChild(div);
     return { value: 0, max: item.pts };
   });
 }
 
-function onSlide(key, i, v) {
-  state[key][i].value = parseInt(v);
-  document.getElementById("val-" + key + "-" + i).textContent = v;
+function setValue(key, i, raw) {
+  const max = state[key][i].max;
+  let v = parseInt(raw);
+  if (isNaN(v) || v < 0) v = 0;
+  if (v > max) v = max;
+  state[key][i].value = v;
+  const id = key + "-" + i;
+  document.getElementById("rng-" + id).value = v;
+  document.getElementById("num-" + id).value = v;
   recalc(key);
   recalcTotal();
   refreshPreview();
+  if (key === "ocular") updateOcularGuide(v);
+}
+
+function onSlide(key, i, v) { setValue(key, i, v); }
+function onType(key, i, v) { setValue(key, i, v); }
+
+function updateOcularGuide(v) {
+  document.getElementById("orb-0").classList.remove("active");
+  document.getElementById("orb-1").classList.remove("active");
+  document.getElementById("orb-2").classList.remove("active");
+  if (v == 0) return;
+  if (v <= 5) document.getElementById("orb-0").classList.add("active");
+  else if (v <= 15) document.getElementById("orb-1").classList.add("active");
+  else document.getElementById("orb-2").classList.add("active");
 }
 
 function recalc(key) {
@@ -488,9 +523,8 @@ function resetAll() {
   ["ocular","midface","mentalis","platysma"].forEach(key => {
     state[key].forEach((item, i) => {
       item.value = 0;
-      const el = document.getElementById("rng-" + key + "-" + i);
-      if (el) el.value = 0;
-      document.getElementById("val-" + key + "-" + i).textContent = 0;
+      document.getElementById("rng-" + key + "-" + i).value = 0;
+      document.getElementById("num-" + key + "-" + i).value = 0;
     });
     recalc(key);
   });
@@ -498,6 +532,7 @@ function resetAll() {
   const badge = document.getElementById("total-badge");
   badge.className = "badge badge-neutral";
   badge.textContent = "enter scores";
+  updateOcularGuide(0);
   refreshPreview();
 }
 
